@@ -31,7 +31,7 @@ export const getMyProducts = async (req: Request, res: Response) => {
 // Get single product by ID (public)
 export const getProductById = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string; //const { id } = req.params;
     const product = await queries.getProductById(id);
 
     if (!product) return res.status(404).json({ error: "Product not found" });
@@ -76,7 +76,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     const { userId } = getAuth(req);
     if (!userId) return res.status(401).json({ error: "Unauthorized" });
 
-    const { id } = req.params;
+    const id = req.params.id as string; //const { id } = req.params;
     const { title, description, imageUrl } = req.body;
 
     // Check if product exists and belongs to user
@@ -110,7 +110,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
     const { userId } = getAuth(req);
     if (!userId) return res.status(401).json({ error: "Unauthorized" });
 
-    const { id } = req.params;
+    const id = req.params.id as string; //const { id } = req.params;
 
     // Check if product exists and belongs to user
     const existingProduct = await queries.getProductById(id);

@@ -8,7 +8,7 @@ export const createComment = async (req: Request, res: Response) => {
     const { userId } = getAuth(req);
     if (!userId) return res.status(401).json({ error: "Unauthorized" });
 
-    const { productId } = req.params;
+    const productId = req.params.productId as string //const { productId } = req.params;
     const { content } = req.body;
 
     if (!content) return res.status(400).json({ error: "Comment content is required" });
@@ -36,7 +36,8 @@ export const deleteComment = async (req: Request, res: Response) => {
     const { userId } = getAuth(req);
     if (!userId) return res.status(401).json({ error: "Unauthorized" });
 
-    const { commentId } = req.params;
+    const commentId = req.params.commentId as string //const { productId } = req.params;
+    //const { commentId } = req.params;
 
     // check if comment exists and belongs to user
     const existingComment = await queries.getCommentById(commentId);
