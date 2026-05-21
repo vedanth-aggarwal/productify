@@ -1,5 +1,25 @@
 {
   "dependencies": {
     "lucide-react": "^1.16.0"
-  }
+  },
+  "name": "pern-product-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend && npm run build --prefix backend",
+    "start": "npm run db:push --prefix backend && npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vedanth-aggarwal/productify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vedanth-aggarwal/productify/issues"
+  },
+  "homepage": "https://github.com/vedanth-aggarwal/productify#readme"
 }
